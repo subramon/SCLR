@@ -263,7 +263,7 @@ static int l_sclr_set_name( lua_State *L) {
   SCLR_REC_TYPE *ptr_sclr=(SCLR_REC_TYPE *)luaL_checkudata(L, 1, "Scalar");
   if ( !lua_isstring(L, 2) ) { go_BYE(1); } 
   const char * const name = luaL_checkstring(L, 2); 
-  strncpy(ptr_sclr->name, name, 15); // 
+  strncpy(ptr_sclr->name, name, SCLR_MAX_LEN_NAME); // 
   lua_pushboolean(L, true); 
   return 1;
 BYE:

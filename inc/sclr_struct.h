@@ -2,8 +2,9 @@
 #define __SCALAR_H
 #include "qtypes.h"
 //START_FOR_CDEF
+#define SCLR_MAX_LEN_NAME 15
 typedef struct _sclr_rec_type { 
-  char name[15+1]; // used for debugging. TODO P3 Keep in sync with Scalar.c
+  char name[SCLR_MAX_LEN_NAME+1]; 
   union { 
     bool bl;
 

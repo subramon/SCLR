@@ -26,21 +26,8 @@ OBJ = $(SRC:.c=.o)
 clean:
 	rm -f *.so ${OBJ} _* ${GEN_SRC} 
 
-# XXXXXX INCS += -I../../../QJIT/GUTILS/inc 
-CGUTILS_SO = ${Q_ROOT}/lib/libcgutils.so
-${CGUTILS_SO} :
-	make -C ../../../QJIT/GUTILS/
-
-RSUTILS_SO = ${RSUTILS_SRC_ROOT}/src/librsutils.so 
-#---------------------------------------------
-CMEM_SO = ${Q_SRC_ROOT}/RUNTIME/CMEM/src/libcmem.so
-CMEM_SO :
-	make -C ${Q_SRC_ROOT}/RUNTIME/CMEM/src/
-#---------------------------------------------
-	
 libsclr.so:  ${GEN_SRC} ${OBJ} outer_eval_cmp.c 
-	gcc  ${OBJ} -shared ${CMEM_SO} ${RSUTILS_SO}  \
-		-o libsclr.so 
+	gcc  ${OBJ} -shared -o libsclr.so 
 
 #------------------------------------------------------
 _eval_arith.c: gen_arith.lua
