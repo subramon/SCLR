@@ -3,9 +3,12 @@ CC = gcc
 
 INCS := -I../inc/ 
 INCS += -I${RSUTILS_SRC_ROOT}/inc/
+INCS += -I${CMEM_SRC_ROOT}/inc/
 INCS += -I${RSUTILS_SRC_ROOT}/gen_inc/
 INCS += -I../../CMEM/inc 
 INCS += -I/usr/include/lua5.1 
+
+LIBS += ${CMEM_SRC_ROOT}/src/libcmem.so 
 
 all: libsclr.so 
 
@@ -27,7 +30,7 @@ clean:
 	rm -f *.so ${OBJ} _* ${GEN_SRC} 
 
 libsclr.so:  ${GEN_SRC} ${OBJ} outer_eval_cmp.c 
-	gcc  ${OBJ} -shared -o libsclr.so 
+	gcc  ${OBJ} -shared -o libsclr.so  ${LIBS}
 
 #------------------------------------------------------
 _eval_arith.c: gen_arith.lua

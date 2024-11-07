@@ -948,7 +948,7 @@ nil
   /* Suppose we did not do this. When we do x = Scalar.new(123),
    * type(x) == "userdata". But doing this allows us to get
    * type(x) == "Scalar" */
-  status = luaL_dostring(L, "return require 'Q/UTILS/lua/register_type'");
+  status = luaL_dostring(L, "return require 'RSUTILS/lua/register_type'");
   if (status != 0 ) {
     fprintf(stderr, "Running require failed:  %s\n", lua_tostring(L, -1));
     exit(1);
