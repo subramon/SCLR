@@ -12,6 +12,10 @@ LIBS += ${CMEM_SRC_ROOT}/src/libcmem.so
 
 all: libsclr.so 
 
+MYLIBS := ${RSUTILS_SRC_ROOT}/src/librsutils.so
+MYLIBS += ${CMEM_SRC_ROOT}/src/libcmem.so
+
+
 GEN_SRC := _eval_arith.c	 
 GEN_SRC += _outer_eval_arith.c 
 GEN_SRC += _eval_cmp.c	 
@@ -30,7 +34,7 @@ clean:
 	rm -f *.so ${OBJ} _* ${GEN_SRC} 
 
 libsclr.so:  ${GEN_SRC} ${OBJ} outer_eval_cmp.c 
-	gcc  ${OBJ} -shared -o libsclr.so  ${LIBS}
+	gcc  ${OBJ} ${MYLIBS} -shared -o libsclr.so  ${LIBS}
 
 #------------------------------------------------------
 _eval_arith.c: gen_arith.lua
