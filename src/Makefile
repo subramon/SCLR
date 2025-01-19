@@ -13,6 +13,7 @@ LIBS += ${CMEM_SRC_ROOT}/src/libcmem.so
 all: libsclr.so 
 
 MYLIBS := ${RSUTILS_SRC_ROOT}/src/librsutils.so
+MYLIBS += ${RSLUTILS_SRC_ROOT}/src/librslutils.so
 MYLIBS += ${CMEM_SRC_ROOT}/src/libcmem.so
 
 
